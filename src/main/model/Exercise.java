@@ -32,4 +32,9 @@ public class Exercise {
     public String getMuscleGroup() {
         return muscleGroup;
     }
+
+    // EFFECTS: returns a list of all the sets
+    public List<Set> getSets() {
+        return sets;
+    }
 }
