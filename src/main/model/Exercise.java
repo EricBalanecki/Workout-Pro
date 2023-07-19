@@ -23,6 +23,10 @@ public class Exercise {
         sets.add(set);
     }
 
+    public void clearSets() {
+        this.sets = new ArrayList<>();
+    }
+
     // EFFECTS: returns the name of the exercise
     public String getName() {
         return name;

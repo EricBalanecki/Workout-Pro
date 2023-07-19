@@ -43,4 +43,14 @@ public class ExerciseTest {
         assertEquals(s3, testExercise.getSets().get(1));
         assertEquals(s2, testExercise.getSets().get(2));
     }
+
+    @Test
+    void testClearSets() {
+        testExercise.addSet(s1);
+        testExercise.addSet(s3);
+        assertEquals(2, testExercise.getSets().size());
+
+        testExercise.clearSets();
+        assertEquals(0, testExercise.getSets().size());
+    }
 }

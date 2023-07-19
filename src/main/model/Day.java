@@ -21,6 +21,13 @@ public class Day {
         exercises.add(e);
     }
 
+    // REQUIRES: index given to be within the index of list exercises
+    // MODIFIES: this
+    // EFFECTS removes the given exercise index from list of exercises
+    public void removeExercise(int ind) {
+        exercises.remove(ind);
+    }
+
     // EFFECTS: returns the name of the day
     public String getName() {
         return this.name;

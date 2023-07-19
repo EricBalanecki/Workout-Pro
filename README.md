@@ -15,8 +15,10 @@ like this will easily allow me to track my workouts and design workout plans.
 
 ## User Story
 
-- As a user, I want to be able to add a workout to my plan
-- As a user, I want to be able to view my workouts for each day
+- As a user, I want to be able to add an exercise to a day
+- As a user, I want to be able to view my exercises for each day
 - As a user, I want to be able to add a set to my workout, a set will contain the number of rep and the percent 
 max weight to lift
-- As a user, I want to be able to remove a workout from my plan
+- As a user, I want to be able to remove an exercise from my plan
+- As a user, I want to be able to see all the sets for each exercise
+- As a user, I want to be able to clear the sets form an exercise
