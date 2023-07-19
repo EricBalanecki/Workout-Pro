@@ -171,8 +171,11 @@ public class WorkoutPlannerApp {
         String muscle = input.next();
 
         Exercise exercise = new Exercise(name, muscle);
-        day.addExercise(exercise);
-        System.out.println("Exercise added successfully");
+        if (day.addExercise(exercise)) {
+            System.out.println("Exercise added successfully");
+        } else {
+            System.out.println("Exercise with that name already exists in this day");
+        }
     }
 
     // MODIFIES: this

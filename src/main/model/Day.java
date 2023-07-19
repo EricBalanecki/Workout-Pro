@@ -16,9 +16,21 @@ public class Day {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds an exercise to the list of exercises
-    public void addExercise(Exercise e) {
-        exercises.add(e);
+    // EFFECTS: adds an exercise to the list of exercises, returns true
+    //          unless an exercise exists with that name, then returns false
+    public boolean addExercise(Exercise e) {
+        boolean b = true;
+        if (exercises.size() > 0) {
+            for (Exercise exercise : exercises) {
+                if (exercise.getName().equals(e.getName())) {
+                    b = false;
+                }
+            }
+        }
+        if (b) {
+            exercises.add(e);
+        }
+        return b;
     }
 
     // REQUIRES: index given to be within the index of list exercises

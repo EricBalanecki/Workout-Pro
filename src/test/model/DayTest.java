@@ -10,6 +10,7 @@ public class DayTest {
     private Exercise e1;
     private Exercise e2;
     private Exercise e3;
+    private Exercise e4;
 
     @BeforeEach
     void runBefore() {
@@ -17,6 +18,7 @@ public class DayTest {
         e1 = new Exercise("Bench Press", "Chest");
         e2 = new Exercise("Bar Squat", "Legs");
         e3 = new Exercise("Pullups", "Lats");
+        e4 = new Exercise("Bench Press", "Shoulders");
     }
 
     @Test
@@ -27,15 +29,17 @@ public class DayTest {
 
     @Test
     void testAddExercise() {
-        testDay.addExercise(e1);
+        assertTrue(testDay.addExercise(e1));
         assertEquals(1, testDay.getExercises().size());
         assertEquals(e1, testDay.getExercises().get(0));
     }
 
     @Test
     void testAddMultipleExercises() {
-        testDay.addExercise(e1);
-        testDay.addExercise(e2);
+        assertTrue(testDay.addExercise(e1));
+        assertTrue(testDay.addExercise(e2));
+        assertFalse(testDay.addExercise(e2));
+        assertFalse(testDay.addExercise(e4));
         assertEquals(2, testDay.getExercises().size());
         assertEquals(e1, testDay.getExercises().get(0));
         assertEquals(e2, testDay.getExercises().get(1));
