@@ -22,3 +22,5 @@ max weight to lift
 - As a user, I want to be able to remove an exercise from my plan
 - As a user, I want to be able to see all the sets for each exercise
 - As a user, I want to be able to clear the sets form an exercise
+- As a user, I want to be able to save my workout plan to file
+- As a user, when I start the application, I want to be given the option to load my workout plan from file.

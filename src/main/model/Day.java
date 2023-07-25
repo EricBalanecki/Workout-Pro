@@ -1,9 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day {
+// represents a day of the week having a name and a list of exercises for that day
+public class Day implements Writable {
     private String name;
     private List<Exercise> exercises;
 
@@ -48,5 +53,23 @@ public class Day {
     // EFFECTS: returns a list of all the exercises
     public List<Exercise> getExercises() {
         return exercises;
+    }
+
+    // EFFECTS: returns Day as a JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("exercises", exercisesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns exercises in the day as a Json Array
+    private JSONArray exercisesToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Exercise t : exercises) {
+            jsonArray.put(t.toJson());
+        }
+        return jsonArray;
     }
 }

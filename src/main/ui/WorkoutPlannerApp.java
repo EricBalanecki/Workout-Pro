@@ -4,12 +4,17 @@ package ui;
 import model.Day;
 import model.Exercise;
 import model.Set;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
-// Code inspired by TellerApp example
+// Code inspired by TellerApp example and JsonSerializationDemo
 // Workout Planner application
 public class WorkoutPlannerApp {
+    private static final String JSON_FILE_PATH = "./data/workroom.json";
     private Day monday;
     private Day tuesday;
     private Day wednesday;
@@ -18,10 +23,35 @@ public class WorkoutPlannerApp {
     private Day saturday;
     private Day sunday;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    // runs the workout planner app
+    //EFFECTS: constructs the days of the week and runs the workout planner app
     public WorkoutPlannerApp() {
-        runWorkoutPlanner();
+        jsonWriter = new JsonWriter(JSON_FILE_PATH);
+        jsonReader = new JsonReader(JSON_FILE_PATH);
+        addDays();
+        loadWorkoutOption();
+    }
+
+    public void loadWorkoutOption() {
+        boolean validSelection = false;
+        String command = null;
+
+        while (!validSelection) {
+            System.out.println("\nDo you want to load the saved file? (yes/no): ");
+            command = input.next();
+            if (command.equals("yes")) {
+                validSelection = true;
+                loadWorkoutPlan();
+                runWorkoutPlanner();
+            } else if (command.equals("no")) {
+                validSelection = true;
+                runWorkoutPlanner();
+            } else {
+                System.out.println("Invalid selection");
+            }
+        }
     }
 
     // MODIFIES: this
@@ -29,7 +59,6 @@ public class WorkoutPlannerApp {
     public void runWorkoutPlanner() {
         boolean programRunning = true;
         String command = null;
-        days();
 
         while (programRunning) {
             mainMenu();
@@ -38,6 +67,8 @@ public class WorkoutPlannerApp {
                 programRunning = false;
             } else if (command.equals("plan workouts")) {
                 selectDay();
+            } else if (command.equals("save workouts")) {
+                saveWorkoutPlan();
             } else {
                 System.out.println("Invalid selection");
             }
@@ -80,7 +111,7 @@ public class WorkoutPlannerApp {
 
     // MODIFIES: this
     // EFFECTS: creates the days of the week
-    private void days() {
+    private void addDays() {
         monday = new Day("Monday");
         tuesday = new Day("Tuesday");
         wednesday = new Day("Wednesday");
@@ -96,6 +127,7 @@ public class WorkoutPlannerApp {
     private void mainMenu() {
         System.out.println("\nSelect a option:");
         System.out.println("\tplan workouts");
+        System.out.println("\tsave workouts");
         System.out.println("\tquit");
     }
 
@@ -243,5 +275,40 @@ public class WorkoutPlannerApp {
     public void clearSets(Exercise e) {
         e.clearSets();
         System.out.println("sets successfully cleared");
+    }
+
+    // EFFECTS: saves the workout plan to file
+    private void saveWorkoutPlan() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(monday);
+            jsonWriter.write(tuesday);
+            jsonWriter.write(wednesday);
+            jsonWriter.write(thursday);
+            jsonWriter.write(friday);
+            jsonWriter.write(saturday);
+            jsonWriter.write(sunday);
+            jsonWriter.close();
+            System.out.println("Saved workout plan to " + JSON_FILE_PATH);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_FILE_PATH);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workout plan from file
+    private void loadWorkoutPlan() {
+        try {
+            monday = jsonReader.read();
+            tuesday = jsonReader.read();
+            wednesday = jsonReader.read();
+            thursday = jsonReader.read();
+            friday = jsonReader.read();
+            saturday = jsonReader.read();
+            sunday = jsonReader.read();
+            System.out.println("Loaded workout plan from " + JSON_FILE_PATH);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_FILE_PATH);
+        }
     }
 }

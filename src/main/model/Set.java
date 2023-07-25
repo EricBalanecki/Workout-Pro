@@ -1,6 +1,10 @@
 package model;
 
-public class Set {
+import org.json.JSONObject;
+import persistence.Writable;
+
+// Represents a set having a number of reps and a percent 1 rep max
+public class Set implements Writable {
     private int reps;
     private int percent1RM;
 
@@ -19,5 +23,14 @@ public class Set {
     // EFFECTS: returns the percent of your 1RM you should lift
     public int getPercent1RM() {
         return percent1RM;
+    }
+
+    // EFFECTS: returns set as a JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("reps", reps);
+        json.put("percent1RM", percent1RM);
+        return json;
     }
 }
