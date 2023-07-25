@@ -1,0 +1,53 @@
+{
+    "exercises": [{
+        "sets": [{
+            "reps": 20,
+            "percent1RM": 20
+        }],
+        "muscleGroup": "chest",
+        "name": "Bench"
+    }],
+    "name": "Monday"
+}{
+    "exercises": [{
+        "sets": [],
+        "muscleGroup": "chest",
+        "name": "Bench"
+    }],
+    "name": "Monday"
+}{
+    "exercises": [{
+        "sets": [],
+        "muscleGroup": "chest",
+        "name": "Bench"
+    }],
+    "name": "Monday"
+}{
+    "exercises": [{
+        "sets": [],
+        "muscleGroup": "chest",
+        "name": "Bench"
+    }],
+    "name": "Monday"
+}{
+    "exercises": [{
+        "sets": [],
+        "muscleGroup": "chest",
+        "name": "Bench"
+    }],
+    "name": "Monday"
+}{
+    "exercises": [{
+        "sets": [],
+        "muscleGroup": "chest",
+        "name": "Bench"
+    }],
+    "name": "Monday"
+}{
+    "exercises": [{
+        "sets": [],
+        "muscleGroup": "chest",
+        "name": "Bench"
+    }],
+    "name": "Monday"
+}

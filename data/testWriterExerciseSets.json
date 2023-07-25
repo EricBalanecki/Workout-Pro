@@ -1,0 +1,27 @@
+{
+    "exercises": [
+        {
+            "sets": [
+                {
+                    "reps": 10,
+                    "percent1RM": 50
+                },
+                {
+                    "reps": 8,
+                    "percent1RM": 70
+                }
+            ],
+            "muscleGroup": "chest",
+            "name": "Bench Press"
+        },
+        {
+            "sets": [{
+                "reps": 10,
+                "percent1RM": 80
+            }],
+            "muscleGroup": "legs",
+            "name": "Split Squats"
+        }
+    ],
+    "name": "Sunday"
+}

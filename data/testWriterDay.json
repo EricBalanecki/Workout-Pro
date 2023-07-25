@@ -1,0 +1,15 @@
+{
+    "exercises": [
+        {
+            "sets": [],
+            "muscleGroup": "chest",
+            "name": "Bench Press"
+        },
+        {
+            "sets": [],
+            "muscleGroup": "legs",
+            "name": "Split Squats"
+        }
+    ],
+    "name": "Sunday"
+}
