@@ -1,53 +1,22 @@
 {
-    "exercises": [{
-        "sets": [{
-            "reps": 20,
-            "percent1RM": 20
-        }],
-        "muscleGroup": "chest",
-        "name": "Bench"
-    }],
+    "exercises": [],
     "name": "Monday"
 }{
-    "exercises": [{
-        "sets": [],
-        "muscleGroup": "chest",
-        "name": "Bench"
-    }],
-    "name": "Monday"
+    "exercises": [],
+    "name": "Tuesday"
 }{
-    "exercises": [{
-        "sets": [],
-        "muscleGroup": "chest",
-        "name": "Bench"
-    }],
-    "name": "Monday"
+    "exercises": [],
+    "name": "Wednesday"
 }{
-    "exercises": [{
-        "sets": [],
-        "muscleGroup": "chest",
-        "name": "Bench"
-    }],
-    "name": "Monday"
+    "exercises": [],
+    "name": "Thursday"
 }{
-    "exercises": [{
-        "sets": [],
-        "muscleGroup": "chest",
-        "name": "Bench"
-    }],
-    "name": "Monday"
+    "exercises": [],
+    "name": "Friday"
 }{
-    "exercises": [{
-        "sets": [],
-        "muscleGroup": "chest",
-        "name": "Bench"
-    }],
-    "name": "Monday"
+    "exercises": [],
+    "name": "Saturday"
 }{
-    "exercises": [{
-        "sets": [],
-        "muscleGroup": "chest",
-        "name": "Bench"
-    }],
-    "name": "Monday"
+    "exercises": [],
+    "name": "Sunday"
 }
