@@ -1,22 +1,37 @@
 {
-    "exercises": [],
-    "name": "Monday"
-}{
-    "exercises": [],
-    "name": "Tuesday"
-}{
-    "exercises": [],
-    "name": "Wednesday"
-}{
-    "exercises": [],
-    "name": "Thursday"
-}{
-    "exercises": [],
-    "name": "Friday"
-}{
-    "exercises": [],
-    "name": "Saturday"
-}{
-    "exercises": [],
-    "name": "Sunday"
+    "name": "My Workout Planner",
+    "days": [
+        {
+            "exercises": [{
+                "sets": [],
+                "muscleGroup": "chest",
+                "name": "bench"
+            }],
+            "day": "Monday"
+        },
+        {
+            "exercises": [],
+            "day": "Tuesday"
+        },
+        {
+            "exercises": [],
+            "day": "Wednesday"
+        },
+        {
+            "exercises": [],
+            "day": "Thursday"
+        },
+        {
+            "exercises": [],
+            "day": "Friday"
+        },
+        {
+            "exercises": [],
+            "day": "Saturday"
+        },
+        {
+            "exercises": [],
+            "day": "Sunday"
+        }
+    ]
 }

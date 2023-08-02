@@ -59,7 +59,7 @@ public class Day implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", name);
+        json.put("day", name);
         json.put("exercises", exercisesToJson());
         return json;
     }

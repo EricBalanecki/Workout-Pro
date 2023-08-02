@@ -3,6 +3,7 @@ package persistence;
 import model.Day;
 import model.Exercise;
 import model.Set;
+import model.WorkoutPlan;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -25,18 +26,18 @@ class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterEmptyDay() {
+    void testWriterEmptyPlan() {
         try {
-            Day day = new Day("Sunday");
+            WorkoutPlan wp = new WorkoutPlan("My Workout Plan");
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyDay.json");
             writer.open();
-            writer.write(day);
+            writer.write(wp);
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyDay.json");
-            day = reader.read();
-            assertEquals("Sunday", day.getName());
-            assertEquals(0, day.getExercises().size());
+            wp = reader.read();
+            assertEquals("My Workout Plan", wp.getName());
+            assertEquals(0, wp.getDaysOfWeek().size());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -45,20 +46,22 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterDay() {
         try {
+            WorkoutPlan wp = new WorkoutPlan("My Workout Plan");
             Day day = new Day("Sunday");
+            wp.addDay(day);
             day.addExercise(new Exercise("Bench Press", "chest"));
             day.addExercise(new Exercise("Split Squats", "legs"));
             JsonWriter writer = new JsonWriter("./data/testWriterDay.json");
             writer.open();
-            writer.write(day);
+            writer.write(wp);
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterDay.json");
-            day = reader.read();
-            assertEquals("Sunday", day.getName());
-            assertEquals(2, day.getExercises().size());
-            checkExercise("Bench Press", "chest", 0, day.getExercises().get(0));
-            checkExercise("Split Squats", "legs", 0, day.getExercises().get(1));
+            wp = reader.read();
+            assertEquals("Sunday", wp.getDaysOfWeek().get(0).getName());
+            assertEquals(2, wp.getDaysOfWeek().get(0).getExercises().size());
+            checkExercise("Bench Press", "chest", 0, wp.getDaysOfWeek().get(0).getExercises().get(0));
+            checkExercise("Split Squats", "legs", 0, wp.getDaysOfWeek().get(0).getExercises().get(1));
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -67,7 +70,9 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterExerciseSets() {
         try {
+            WorkoutPlan wp = new WorkoutPlan("My Workout Plan");
             Day day = new Day("Sunday");
+            wp.addDay(day);
             Exercise e1 = new Exercise("Bench Press", "chest");
             Exercise e2 = new Exercise("Split Squats", "legs");
             e1.addSet(new Set(10, 50));
@@ -77,18 +82,19 @@ class JsonWriterTest extends JsonTest {
             day.addExercise(e2);
             JsonWriter writer = new JsonWriter("./data/testWriterExerciseSets.json");
             writer.open();
-            writer.write(day);
+            writer.write(wp);
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterExerciseSets.json");
-            day = reader.read();
-            assertEquals("Sunday", day.getName());
-            assertEquals(2, day.getExercises().size());
-            assertEquals(2, day.getExercises().get(0).getSets().size());
-            assertEquals(1, day.getExercises().get(1).getSets().size());
-            checkSet(10, 50, day.getExercises().get(0).getSets().get(0));
-            checkSet(8, 70, day.getExercises().get(0).getSets().get(1));
-            checkSet(10, 80, day.getExercises().get(1).getSets().get(0));
+            wp = reader.read();
+            Day sunday = wp.getDaysOfWeek().get(0);
+            assertEquals("Sunday", sunday.getName());
+            assertEquals(2, sunday.getExercises().size());
+            assertEquals(2, sunday.getExercises().get(0).getSets().size());
+            assertEquals(1, sunday.getExercises().get(1).getSets().size());
+            checkSet(10, 50, sunday.getExercises().get(0).getSets().get(0));
+            checkSet(8, 70, sunday.getExercises().get(0).getSets().get(1));
+            checkSet(10, 80, sunday.getExercises().get(1).getSets().get(0));
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

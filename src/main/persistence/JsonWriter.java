@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Day;
+import model.WorkoutPlan;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -27,9 +28,9 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of Day to file
-    public void write(Day day) {
-        JSONObject json = day.toJson();
+    // EFFECTS: writes JSON representation of Workout Plan to file
+    public void write(WorkoutPlan wp) {
+        JSONObject json = wp.toJson();
         saveToFile(json.toString(TAB));
     }
 

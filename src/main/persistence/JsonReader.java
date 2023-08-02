@@ -3,6 +3,7 @@ package persistence;
 import model.Day;
 import model.Exercise;
 import model.Set;
+import model.WorkoutPlan;
 import org.json.*;
 
 import java.io.IOException;
@@ -22,11 +23,11 @@ public class JsonReader {
     }
 
     // EFFECTS: reads day from file and returns it;
-    // throws IOException if an error occurs reading data from file
-    public Day read() throws IOException {
+    //          throws IOException if an error occurs reading data from file
+    public WorkoutPlan read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseDay(jsonObject);
+        return parseWorkoutPlan(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -38,12 +39,28 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses day from JSON object and returns it
-    private Day parseDay(JSONObject jsonObject) {
+    // EFFECTS: parses WorkoutPlan from JSON object and returns it
+    private WorkoutPlan parseWorkoutPlan(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
+        WorkoutPlan wp = new WorkoutPlan(name);
+        addDays(wp, jsonObject);
+        return wp;
+    }
+
+    private void addDays(WorkoutPlan wp, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("days");
+        for (Object json: jsonArray) {
+            JSONObject nextDay = (JSONObject) json;
+            addDay(wp, nextDay);
+        }
+    }
+
+    // EFFECTS: parses day from JSON object and returns it
+    private void addDay(WorkoutPlan wp, JSONObject jsonObject) {
+        String name = jsonObject.getString("day");
         Day day = new Day(name);
         addExercises(day, jsonObject);
-        return day;
+        wp.addDay(day);
     }
 
     // MODIFIES: day

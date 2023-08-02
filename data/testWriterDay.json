@@ -1,15 +1,18 @@
 {
-    "exercises": [
-        {
-            "sets": [],
-            "muscleGroup": "chest",
-            "name": "Bench Press"
-        },
-        {
-            "sets": [],
-            "muscleGroup": "legs",
-            "name": "Split Squats"
-        }
-    ],
-    "name": "Sunday"
+    "name": "My Workout Plan",
+    "days": [{
+        "exercises": [
+            {
+                "sets": [],
+                "muscleGroup": "chest",
+                "name": "Bench Press"
+            },
+            {
+                "sets": [],
+                "muscleGroup": "legs",
+                "name": "Split Squats"
+            }
+        ],
+        "day": "Sunday"
+    }]
 }
