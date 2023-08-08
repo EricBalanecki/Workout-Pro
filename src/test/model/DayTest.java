@@ -55,5 +55,7 @@ public class DayTest {
         assertEquals(2, testDay.getExercises().size());
         assertEquals(e1, testDay.getExercises().get(0));
         assertEquals(e3, testDay.getExercises().get(1));
+        testDay.removeExercise(e3);
+        assertEquals(1, testDay.getExercises().size());
     }
 }
