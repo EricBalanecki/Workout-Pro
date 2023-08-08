@@ -8,6 +8,8 @@ import model.WorkoutPlan;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -228,7 +230,7 @@ public class WorkoutPlannerApp {
     public void removeExercise(Day day) {
         System.out.println("Enter exercise number:");
         int number = Integer.valueOf(input.next()) - 1;
-        day.removeExercise(number);
+        day.removeExerciseInd(number);
         System.out.println("Exercise removed successfully");
     }
 

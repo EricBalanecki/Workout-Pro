@@ -41,8 +41,14 @@ public class Day implements Writable {
     // REQUIRES: index given to be within the index of list exercises
     // MODIFIES: this
     // EFFECTS removes the given exercise index from list of exercises
-    public void removeExercise(int ind) {
+    public void removeExerciseInd(int ind) {
         exercises.remove(ind);
+    }
+
+    // MODIFIES: this
+    // EFFECTS removes the given exercise list of exercises
+    public void removeExercise(Exercise exercise) {
+        exercises.remove(exercise);
     }
 
     // EFFECTS: returns the name of the day
