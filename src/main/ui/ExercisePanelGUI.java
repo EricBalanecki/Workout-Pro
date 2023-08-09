@@ -6,26 +6,21 @@ import model.Set;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 // A panel that displays the info for a exercise
 public class ExercisePanelGUI extends JPanel {
     private Exercise exercise;
     private JLabel exerciseLabel;
     private JButton addSet;
-    private JButton clearSets;
     private JButton delete;
     private JPanel parentPanel;
     private Day day;
-    private WorkoutPlannerGUI workoutApp;
 
     // EFFECTS: Creates a new panel setting the parent panel to panel, the exercise to exercise, and day of the week
     //          to day, also creates the buttons in panel
     public ExercisePanelGUI(JPanel panel, Exercise exercise, Day day) {
         this.exercise = exercise;
         this.addSet = new JButton("+");
-        this.clearSets = new JButton("Clear Sets");
         this.delete = new JButton("X");
         this.parentPanel = panel;
         this.day = day;
@@ -84,7 +79,7 @@ public class ExercisePanelGUI extends JPanel {
         but.addActionListener(e -> {
             exercise.addSet(new Set(Integer.valueOf(reps.getText()), Integer.valueOf(mg.getText())));
             addSetFrame.setVisible(false);
-            addSetFrame.remove(panel);
+            addSetFrame.dispose();
             new SetPanelGUI(parentPanel, new Set(Integer.valueOf(reps.getText()), Integer.valueOf(mg.getText())));
         });
         panel.add(exerciseName);

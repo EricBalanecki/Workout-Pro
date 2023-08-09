@@ -2,73 +2,15 @@
     "name": "My Workout Planner",
     "days": [
         {
-            "exercises": [
-                {
-                    "sets": [
-                        {
-                            "reps": 10,
-                            "percent1RM": 50
-                        },
-                        {
-                            "reps": 20,
-                            "percent1RM": 20
-                        },
-                        {
-                            "reps": 12,
-                            "percent1RM": 40
-                        },
-                        {
-                            "reps": 20,
-                            "percent1RM": 20
-                        }
-                    ],
-                    "muscleGroup": "chest",
-                    "name": "Bench Press"
-                },
-                {
-                    "sets": [],
-                    "muscleGroup": "legs",
-                    "name": "dope"
-                },
-                {
-                    "sets": [{
-                        "reps": 5,
-                        "percent1RM": 70
-                    }],
-                    "muscleGroup": "legs",
-                    "name": "Deadlift"
-                },
-                {
-                    "sets": [],
-                    "muscleGroup": "tricpep",
-                    "name": "close grip bench"
-                },
-                {
-                    "sets": [],
-                    "muscleGroup": "chest",
-                    "name": "pec flies"
-                },
-                {
-                    "sets": [],
-                    "muscleGroup": "Legs",
-                    "name": "Bar Squat"
-                }
-            ],
+            "exercises": [],
             "day": "Monday"
         },
         {
-            "exercises": [
-                {
-                    "sets": [],
-                    "muscleGroup": "chest",
-                    "name": "Bench Press"
-                },
-                {
-                    "sets": [],
-                    "muscleGroup": "Legs",
-                    "name": "Bar Squat"
-                }
-            ],
+            "exercises": [{
+                "sets": [],
+                "muscleGroup": "Legs",
+                "name": "Bar Squat"
+            }],
             "day": "Tuesday"
         },
         {

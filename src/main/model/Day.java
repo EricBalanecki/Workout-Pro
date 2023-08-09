@@ -35,6 +35,7 @@ public class Day implements Writable {
         if (b) {
             exercises.add(e);
         }
+        EventLog.getInstance().logEvent(new Event("Exercise " + e.getName() + " added to " + name));
         return b;
     }
 
@@ -47,8 +48,9 @@ public class Day implements Writable {
 
     // MODIFIES: this
     // EFFECTS removes the given exercise list of exercises
-    public void removeExercise(Exercise exercise) {
-        exercises.remove(exercise);
+    public void removeExercise(Exercise e) {
+        exercises.remove(e);
+        EventLog.getInstance().logEvent(new Event("Exercise " + e.getName() + " removed from " + name));
     }
 
     // EFFECTS: returns the name of the day

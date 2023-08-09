@@ -1,26 +1,21 @@
 package ui;
 
-import model.Day;
-import model.Exercise;
-import model.Set;
-import model.WorkoutPlan;
+import model.*;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+
 
 // Workout Planner application GUI
-public class WorkoutPlannerGUI {
+public class WorkoutPlannerGUI extends JFrame implements WindowListener {
     private WorkoutPlan workoutPlan;
-    private JFrame frame;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_FILE_PATH = "./data/workroom.json";
@@ -34,14 +29,14 @@ public class WorkoutPlannerGUI {
 
     //EFFECTS: constructs a workout plan and runs the workout planner GUI app
     public WorkoutPlannerGUI() {
+        super("Workout Planner App");
         workoutPlan = new WorkoutPlan("My Workout Planner");
         jsonWriter = new JsonWriter(JSON_FILE_PATH);
         jsonReader = new JsonReader(JSON_FILE_PATH);
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Workout Planner App");
-        frame.setSize(new Dimension(500, 400));
-        frame.setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(new Dimension(500, 400));
+        setResizable(false);
+        addWindowListener(this);
         buildJavaSwing();
     }
 
@@ -55,13 +50,13 @@ public class WorkoutPlannerGUI {
         yes.setBounds(20, 50, 80, 25);
         yes.addActionListener(e -> {
             loadWorkoutPlan();
-            frame.remove(panel);
+            remove(panel);
             runWorkoutPlanner();
         });
         JButton no = new JButton("no");
         no.setBounds(20, 80, 80, 25);
         no.addActionListener(e -> {
-            frame.remove(panel);
+            remove(panel);
             addDays();
             runWorkoutPlanner();
         });
@@ -75,7 +70,7 @@ public class WorkoutPlannerGUI {
     // MODIFIES: this
     // EFFECTS: processes the user actions
     public void runWorkoutPlanner() {
-        frame.setVisible(false);
+        setVisible(false);
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Choose an option below:");
         JButton planButton = new JButton("Plan Workouts");
@@ -93,15 +88,15 @@ public class WorkoutPlannerGUI {
     // EFFECTS: Processes user actions
     public void mainMenu(JButton plan, JButton save, JButton quit, JPanel panel) {
         plan.addActionListener(e -> {
-            frame.setVisible(false);
-            frame.remove(panel);
+            setVisible(false);
+            remove(panel);
             loadDays();
         });
         save.addActionListener(e -> {
             saveWorkoutPlan();
         });
         quit.addActionListener(e -> {
-            frame.dispose();
+            dispose();
         });
     }
 
@@ -115,13 +110,13 @@ public class WorkoutPlannerGUI {
         JButton backButton = new JButton("back");
         JPanel panel = new JPanel();
         selectButton.addActionListener(e -> {
-            frame.setVisible(false);
-            frame.remove(panel);
+            setVisible(false);
+            remove(panel);
             selectDay(comboBox.getSelectedItem());
         });
         backButton.addActionListener(e -> {
-            frame.setVisible(false);
-            frame.remove(panel);
+            setVisible(false);
+            remove(panel);
             runWorkoutPlanner();
         });
         panel.add(label);
@@ -154,19 +149,19 @@ public class WorkoutPlannerGUI {
     //EFFECTS: processes the given input by the user
     public void selectDay(Object day) {
         if (day.equals("Monday")) {
-            new ExerciseFrame(workoutPlan.getDaysOfWeek().get(0), this);
+            new ExercisesFrameGUI(workoutPlan.getDaysOfWeek().get(0), this);
         } else if (day.equals("Tuesday")) {
-            new ExerciseFrame(workoutPlan.getDaysOfWeek().get(1), this);
+            new ExercisesFrameGUI(workoutPlan.getDaysOfWeek().get(1), this);
         } else if (day.equals("Wednesday")) {
-            new ExerciseFrame(workoutPlan.getDaysOfWeek().get(2), this);
+            new ExercisesFrameGUI(workoutPlan.getDaysOfWeek().get(2), this);
         } else if (day.equals("Thursday")) {
-            new ExerciseFrame(workoutPlan.getDaysOfWeek().get(3), this);
+            new ExercisesFrameGUI(workoutPlan.getDaysOfWeek().get(3), this);
         } else if (day.equals("Friday")) {
-            new ExerciseFrame(workoutPlan.getDaysOfWeek().get(4), this);
+            new ExercisesFrameGUI(workoutPlan.getDaysOfWeek().get(4), this);
         } else if (day.equals("Saturday")) {
-            new ExerciseFrame(workoutPlan.getDaysOfWeek().get(5), this);
+            new ExercisesFrameGUI(workoutPlan.getDaysOfWeek().get(5), this);
         } else if (day.equals("Sunday")) {
-            new ExerciseFrame(workoutPlan.getDaysOfWeek().get(6), this);
+            new ExercisesFrameGUI(workoutPlan.getDaysOfWeek().get(6), this);
         }
     }
 
@@ -186,8 +181,8 @@ public class WorkoutPlannerGUI {
         but.addActionListener(e -> {
             day.addExercise(new Exercise(name.getText(), mg.getText()));
             addWorkoutFrame.setVisible(false);
-            addWorkoutFrame.remove(panel);
-            new ExerciseFrame(day, this);
+            addWorkoutFrame.dispose();
+            new ExercisesFrameGUI(day, this);
         });
         panel.add(exerciseName);
         panel.add(name);
@@ -226,9 +221,48 @@ public class WorkoutPlannerGUI {
     private void createBasicPanel(JPanel panel) {
         panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
 //        panel.setBackground(Color.cyan);
-        frame.add(panel);
+        add(panel);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        frame.setVisible(true);
+        setVisible(true);
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        for (Event event: EventLog.getInstance()) {
+            System.out.println(event);
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        for (Event event: EventLog.getInstance()) {
+            System.out.println(event);
+        }
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 }
 

@@ -1,15 +1,13 @@
 package ui;
 
-import model.Day;
-import model.Exercise;
-import model.Set;
+import model.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 // A jframe for each exercise added
-public class ExerciseFrame extends JFrame {
+public class ExercisesFrameGUI extends JFrame implements WindowListener {
     private Day day;
     private WorkoutPlannerGUI workoutApp;
     private JLabel banner;
@@ -21,7 +19,7 @@ public class ExerciseFrame extends JFrame {
 
     // EFFECTS: creates a new frame that contains all that shows the current exercises, and takes in the day of the
     //          week, and the current workout planner app running.
-    public ExerciseFrame(Day day, WorkoutPlannerGUI workoutApp) {
+    public ExercisesFrameGUI(Day day, WorkoutPlannerGUI workoutApp) {
         super("Workout Planner");
         this.day = day;
         this.workoutApp = workoutApp;
@@ -38,6 +36,7 @@ public class ExerciseFrame extends JFrame {
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addWindowListener(this);
         createComponents();
     }
 
@@ -45,9 +44,9 @@ public class ExerciseFrame extends JFrame {
     // EFFECTS: adds the components to the frame and processes the add workout button command
     public void createComponents() {
         exercisePanel.add(scrollPanel);
-        for (Exercise exercise: day.getExercises()) {
+        for (Exercise exercise : day.getExercises()) {
             new ExercisePanelGUI(scrollPanel, exercise, day);
-            for (Set set: exercise.getSets()) {
+            for (Set set : exercise.getSets()) {
                 new SetPanelGUI(scrollPanel, set);
             }
         }
@@ -58,6 +57,7 @@ public class ExerciseFrame extends JFrame {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         addWorkoutButton.addActionListener(e -> {
             setVisible(false);
+            dispose();
             workoutApp.addWorkout(day);
         });
         addWorkoutButton.setBounds(-5, Constants.GUI_SIZE.height - 140, Constants.ADDEXERCISE.width,
@@ -75,9 +75,46 @@ public class ExerciseFrame extends JFrame {
                 Constants.ADDEXERCISE.height);
         backButton.addActionListener(e -> {
             setVisible(false);
+            dispose();
             workoutApp.loadDays();
         });
         getContentPane().add(backButton);
     }
 
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event);
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
+    }
 }

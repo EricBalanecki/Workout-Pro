@@ -24,3 +24,13 @@ max weight to lift
 - As a user, I want to be able to see all the sets for each exercise
 - As a user, I want to be able to save my workout plan to file
 - As a user, when I start the application, I want to be given the option to load my workout plan from file.
+
+## Sample eventLog
+Wed Aug 09 13:07:52 PDT 2023 <br>
+Exercise Bench Press added to Wednesday <br>
+Wed Aug 09 13:08:00 PDT 2023 <br>
+Added set to Bench Press exercise. <br>
+Wed Aug 09 13:08:27 PDT 2023 <br>
+Exercise Bar Squat added to Tuesday <br>
+Wed Aug 09 13:08:34 PDT 2023 <br>
+Exercise Bench Press removed from Wednesday <br>
