@@ -34,3 +34,10 @@ Wed Aug 09 13:08:27 PDT 2023 <br>
 Exercise Bar Squat added to Tuesday <br>
 Wed Aug 09 13:08:34 PDT 2023 <br>
 Exercise Bench Press removed from Wednesday <br>
+
+## Phase 4 Task 3
+
+Currently, there is lots of coupling between the Exercise and Set classes. When trying to get access to exercise
+must call for each loops and it ends up being a long process. I believe to improve the design, I could add a Set
+Iterator class to exercise that implemented iterator and returned a set. This would allow me to access private items 
+in set like reps and P1RM without having to call a for each loop each time.
