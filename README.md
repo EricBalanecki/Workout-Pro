@@ -37,7 +37,12 @@ Exercise Bench Press removed from Wednesday <br>
 
 ## Phase 4 Task 3
 
-Currently, there is lots of coupling between the Exercise and Set classes. When trying to get access to exercise
-must call for each loops and it ends up being a long process. I believe to improve the design, I could add a Set
-Iterator class to exercise that implemented iterator and returned a set. This would allow me to access private items 
-in set like reps and P1RM without having to call a for each loop each time.
+The first refactoring I would do to my project given I had more time to work on it would be to setup a singleton 
+pattern in the WrokoutPlanGUI and ExerciseFrameGUI. Currently these two frames get called mutiple times and after
+runing the program for long many are disposed or set to invisible. Singleton would allow me to call the same
+one each time making hte code much better.
+
+
+The second thing I would do would be to make Day and Exercise implement Iterator. Day would return Exercise and 
+Exercise would return Set. This would remove and lots of coupling in my code and allow me to access the Exercises
+and Sets lists without long for each loops.
