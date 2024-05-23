@@ -21,16 +21,6 @@ max weight to lift
 - As a user, I want to be able to save my workout plan to file
 - As a user, when I start the application, I want to be given the option to load my workout plan from file.
 
-## Sample eventLog
-Wed Aug 09 13:07:52 PDT 2023 <br>
-Exercise Bench Press added to Wednesday <br>
-Wed Aug 09 13:08:00 PDT 2023 <br>
-Added set to Bench Press exercise. <br>
-Wed Aug 09 13:08:27 PDT 2023 <br>
-Exercise Bar Squat added to Tuesday <br>
-Wed Aug 09 13:08:34 PDT 2023 <br>
-Exercise Bench Press removed from Wednesday <br>
-
 ## Phase 4 Task 3
 
 If I had more time to work on my project, the first refactoring I would undertake is implementing the Singleton pattern in the `WorkoutPlanGUI` and `ExerciseFrameGUI` classes. Currently, these two frames are instantiated multiple times, and after running the program for a while, many instances are disposed of or set to invisible. By using the Singleton pattern, I can ensure that the same instance is called each time, significantly improving the code's efficiency and maintainability.
