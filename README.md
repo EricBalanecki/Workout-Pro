@@ -1,16 +1,12 @@
-# My Personal Project
+# Workout Pro
 
-## Phase 0
+## Background
 
-&nbsp;&nbsp;&nbsp;&nbsp; My application is going to be a workout planner,
-that allows you to go on to each day of the week and add/remove 
-specific workouts. In those workouts you can specify the muscle group
-it hits. You can also add a set, a set will contain the number of reps to do in the set
-along with the percent of your one rep max weight to lift
-There will also be an area to add additional notes. The target audience for this app
-will be athletes and bodybuilders. This project is important to me 
-because working out is a huge part of my lifestyle and having an app
-like this will easily allow me to track my workouts and design workout plans.
+&nbsp;&nbsp;&nbsp;&nbsp; For my final project in CPSC210 (Software Construction), I developed a Java-based program called Workout Pro. This cross-platform GUI desktop application, built using the Swing library, enables users to plan and view their fitness workouts. Through this project, I gained hands-on experience with several important concepts, including Data Abstraction and Code Testing using JUnit5.
+
+Additionally, I implemented best practices in object-oriented construction and design, such as Hierarchy and Associations, Bi-Directional Relationships, Cohesion and Coupling. This project provided an excellent opportunity to work with an object-oriented programming language while adhering to strict deadlines, significantly enhancing my software development skills.
+
+Workout Pro allows users to plan their workouts for each day of the week. Users can customize their workout plans by changing the number of sets and reps for each set and adding different exercises to each day. This feature-rich application aims to make fitness planning more accessible and efficient, offering a personalized workout experience.
 
 
 ## User Story
