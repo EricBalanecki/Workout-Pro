@@ -9,6 +9,9 @@ Additionally, I implemented best practices in object-oriented construction and d
 Workout Pro allows users to plan their workouts for each day of the week. Users can customize their workout plans by changing the number of sets and reps for each set and adding different exercises to each day. This feature-rich application aims to make fitness planning more accessible and efficient, offering a personalized workout experience.
 
 
+![Screen Recording 2024-05-22 at 7 31 58 PM](https://github.com/EricBalanecki/WorkoutPro-CPSC210-Project/assets/58793215/7eac461e-c0df-48bd-8918-c03e3d440843)
+
+
 ## User Story
 
 - As a user, I want to be able to add an exercise to a day
