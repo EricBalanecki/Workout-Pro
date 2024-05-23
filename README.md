@@ -37,12 +37,10 @@ Exercise Bench Press removed from Wednesday <br>
 
 ## Phase 4 Task 3
 
-The first refactoring I would do to my project given I had more time to work on it would be to setup a singleton 
-pattern in the WrokoutPlanGUI and ExerciseFrameGUI. Currently these two frames get called mutiple times and after
-runing the program for long many are disposed or set to invisible. Singleton would allow me to call the same
-one each time making hte code much better.
+Certainly! Here's an improved version of your statement:
 
+---
 
-The second thing I would do would be to make Day and Exercise implement Iterator. Day would return Exercise and 
-Exercise would return Set. This would remove and lots of coupling in my code and allow me to access the Exercises
-and Sets lists without long for each loops.
+If I had more time to work on my project, the first refactoring I would undertake is implementing the Singleton pattern in the `WorkoutPlanGUI` and `ExerciseFrameGUI` classes. Currently, these two frames are instantiated multiple times, and after running the program for a while, many instances are disposed of or set to invisible. By using the Singleton pattern, I can ensure that the same instance is called each time, significantly improving the code's efficiency and maintainability.
+
+The second refactoring I would do is to have the `Day` and `Exercise` classes implement the `Iterator` interface. `Day` would iterate over `Exercise` objects, and `Exercise` would iterate over `Set` objects. This change would reduce the coupling in my code and eliminate the need for lengthy `for-each` loops to access the `Exercises` and `Sets` lists.
