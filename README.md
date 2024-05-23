@@ -1,4 +1,4 @@
-# Workout Pro
+# Personal Project: Workout Pro
 
 ## Background
 
